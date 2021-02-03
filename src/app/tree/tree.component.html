@@ -1,0 +1,52 @@
+<p>tree works!</p>
+<div >
+    
+    <ul>
+        <li *ngFor="let dep of departs;let i = index">
+            <button >-</button>
+            <label><input type="checkbox" [(ngModel)]="dep.checked" (change)="checkEvent(dep,i)">{{dep.name}}</label>
+        </li>
+    </ul>
+</div>
+
+<!-- <ul>
+    <li >
+        <input type="checkbox" (change)='clickList()'>A
+        <ul *ngIf='flag'>
+            <li >
+                <input type="checkbox" (change)='showArr()' >aaa
+            </li>
+        </ul>
+    </li>
+    <li>B
+        <ul>
+            <li>bbb</li>
+        </ul>
+    </li>
+    <li>C
+        <ul>
+            <li>ccc</li>
+        </ul>
+    </li>
+</ul>
+<div>
+    <ul *ngIf='arrlist.length'>
+        <li *ngFor='let i of arrlist'>{{i}}</li>
+    </ul>
+</div> -->
+<!--<button (click)='handleData()'>click</button>-->
+<!-- <ul *ngIf='newArr.length'>
+    <li *ngFor='let i of newArr'>{{i.title}}</li>
+</ul> -->
+
+
+<!-- <div>
+    <ul>
+        <li>
+            111
+        <input type="checkbox" (click)='clickTest($event.target.checked)'>
+        </li>
+    </ul>
+</div>
+ -->
+

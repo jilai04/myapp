@@ -1,0 +1,51 @@
+<div class="search-container">
+    <div class="input-group pt-2 pb-2" id="portfolioSearch">
+        <input type="text" class="form-control search-text shadow-none" aria-labelledby="portfolioSearch" placeholder="Search"/>
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary search-btn shadow-none" type="button" >
+                <i class="material-icons search-icon">
+                    search
+                </i>
+            </button>
+        </div>
+    </div>
+</div>
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+      <mat-checkbox class="checklist-leaf-node"
+                    [checked]="checklistSelection.isSelected(node)"
+                    (change)="todoLeafItemSelectionToggle(node)">{{node.item}}</mat-checkbox>
+    </mat-tree-node>
+  
+    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+      <button mat-icon-button matTreeNodeToggle
+              [attr.aria-label]="'toggle ' + node.filename">
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+        </mat-icon>
+      </button>
+      <mat-checkbox [checked]="descendantsAllSelected(node)"
+                                      (change)="todoItemSelectionToggle(node)">{{node.item}}</mat-checkbox>
+    </mat-tree-node>
+  </mat-tree>
+  
+<!-- <div class="included">
+    <ul>
+        <li *ngFor="let node of selectedNodes">{{node.item}}</li>
+    </ul>
+</div> -->
+<div class="included">
+  <ul>
+      <li *ngFor="let node of rightArr">
+        <p *ngIf='flag'>{{node}}</p>
+      </li>
+  </ul>
+</div>
+  <!-- Copyright 2019 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
+      <div>
+        <button class="select-all" (click)="checkAll()" >Select All</button>
+        <span class="separator">|</span>
+        <button class="clear-all" (click)="uncheckAll()">Clear All</button>
+    </div>

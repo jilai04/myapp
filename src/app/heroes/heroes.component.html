@@ -1,0 +1,18 @@
+<p>heroes works!</p>
+
+<ul class="heroes">
+    <li *ngFor= 'let i of heroes'  > 
+        <a routerLink = '/detail/{{i.id}}'><span>{{i.id}}</span>-----------{{i.name}}</a>
+    </li>
+</ul>
+
+<div>
+    <button (click) = 'handleClick()'>Change</button>
+</div>
+
+<div>
+    <ng-content></ng-content>
+</div>
+
+<app-hero-order [testKey]='heroesKey' (output)='change($event)'></app-hero-order>
+

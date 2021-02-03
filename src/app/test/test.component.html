@@ -1,0 +1,43 @@
+<div >
+  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="scroll" #scroll>
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+      <mat-checkbox class="checklist-leaf-node"
+                    [checked]="checklistSelection.isSelected(node)"
+                    (change)="todoLeafItemSelectionToggle(node)"   >{{node.item}}---- <em>{{node.id}}</em>------ <span>{{node.type}}</span> </mat-checkbox>
+    
+    </mat-tree-node>
+  
+    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding >
+      <button mat-icon-button matTreeNodeToggle
+              [attr.aria-label]="'toggle ' + node.filename">
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+        </mat-icon>
+      </button>
+      <mat-checkbox [checked]="descendantsAllSelected(node)"
+                                      (change)="todoItemSelectionToggle(node)" >{{node.item}}---- <em>{{node.id}}</em>------ <span>{{node.type}}</span></mat-checkbox>
+    </mat-tree-node>
+  </mat-tree>
+  
+<!-- <div class="included">
+    <ul>
+        <li *ngFor="let node of selectedNodes">{{node.item}}</li>
+    </ul>
+</div> -->
+<button (click)='save()'>Save</button>
+<div class="included">
+
+<ul>
+  <li *ngFor="let node of IncludedArr">
+    <span *ngIf='node.checkFlag' [ngStyle]="{'color': node.type === 'MC' ? 'red' : '' }">{{node.item}} --------- {{node.type}}  </span>
+  </li>
+</ul>
+
+</div>
+
+<div>
+  <button class="select-all" (click)="checkAll()">Select All</button>
+  <span class="separator">|</span>
+  <button class="clear-all" (click)="uncheckAll()">Clear All</button>
+</div>
+</div>
