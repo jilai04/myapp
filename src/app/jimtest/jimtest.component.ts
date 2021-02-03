@@ -10,6 +10,7 @@ export class JimtestComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('111');
   }
 
 }
